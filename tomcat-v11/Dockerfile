@@ -20,4 +20,5 @@ COPY tomcat /opt/tomcat
 CMD ["catalina.sh", "run"]
 VOLUME ["/logs"]
 EXPOSE 8080
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 CMD curl http://localhost:8080/ || exit 1
 #END
