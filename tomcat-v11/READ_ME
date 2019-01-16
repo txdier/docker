@@ -1,5 +1,7 @@
 #删除tomcat webapps下所有目录
+#添加了日志记录文件，适用于开发或测试环境调试
 #下载log4j-1.2.17.tar.gz 解压后将log4j-1.2.17.jar放到tomcat/lib目录下，同时在tomcat/lib目录下新增log4j.properties文件，内容如下
+
 
 ###开始###
 log4j.rootLogger=WARN, CATALINA
