@@ -1,0 +1,54 @@
+#删除tomcat webapps下所有目录
+#添加了日志记录文件，适用于开发或测试环境调试
+#下载log4j-1.2.17.tar.gz 解压后将log4j-1.2.17.jar放到tomcat/lib目录下，同时在tomcat/lib目录下新增log4j.properties文件，内容如下
+
+
+###开始###
+log4j.rootLogger=WARN, CATALINA
+
+# Define all the appenders
+log4j.appender.CATALINA=org.apache.log4j.RollingFileAppender
+log4j.appender.CATALINA.File=${catalina.base}/logs/catalina.log
+log4j.appender.CATALINA.MaxFileSize=10240KB
+log4j.appender.CATALINA.MaxBackupIndex=100
+log4j.appender.CATALINA.Append=true
+log4j.appender.CATALINA.Encoding=UTF-8
+log4j.appender.CATALINA.DatePattern='.'yyyy-MM-dd-HH-mm'.log'
+log4j.appender.CATALINA.layout = org.apache.log4j.PatternLayout
+log4j.appender.CATALINA.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+log4j.appender.LOCALHOST=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.LOCALHOST.File=${catalina.base}/logs/localhost.log
+log4j.appender.LOCALHOST.Append=true
+log4j.appender.LOCALHOST.Encoding=UTF-8
+log4j.appender.LOCALHOST.DatePattern='.'yyyy-MM-dd'.log'
+log4j.appender.LOCALHOST.layout = org.apache.log4j.PatternLayout
+log4j.appender.LOCALHOST.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+log4j.appender.MANAGER=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MANAGER.File=${catalina.base}/logs/manager.log
+log4j.appender.MANAGER.Append=true
+log4j.appender.MANAGER.Encoding=UTF-8
+log4j.appender.MANAGER.DatePattern='.'yyyy-MM-dd'.log'
+log4j.appender.MANAGER.layout = org.apache.log4j.PatternLayout
+log4j.appender.MANAGER.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+log4j.appender.HOST-MANAGER=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.HOST-MANAGER.File=${catalina.base}/logs/host-manager.log
+log4j.appender.HOST-MANAGER.Append=true
+log4j.appender.HOST-MANAGER.Encoding=UTF-8
+log4j.appender.HOST-MANAGER.DatePattern='.'yyyy-MM-dd'.log'
+log4j.appender.HOST-MANAGER.layout = org.apache.log4j.PatternLayout
+log4j.appender.HOST-MANAGER.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
+log4j.appender.CONSOLE.Encoding=UTF-8
+log4j.appender.CONSOLE.layout = org.apache.log4j.PatternLayout
+log4j.appender.CONSOLE.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+# Configure which loggers log to which appenders
+log4j.logger.org.apache.catalina.core.ContainerBase.[Catalina].[localhost]=WARN, LOCALHOST
+log4j.logger.org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager]=WARN, MANAGER
+log4j.logger.org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager]=WARN, HOST-MANAGER
+
+###结束###
