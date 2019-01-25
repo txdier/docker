@@ -17,6 +17,7 @@ ENV	TOMCAT_HOME=/opt/tomcat \
     CATALINA_HOME=/opt/tomcat \
 	CATALINA_OPTS="-Xms1024m -Xmx2048m -Xmn768m -Xss2m -XX:NewSize=512M -XX:MaxNewSize=512m  -XX:PermSize=512M -XX:MaxPermSize=1024m -XX:-UseSplitVerifier -Duser.timezone=GMT+08"
 COPY tomcat /opt/tomcat
+RUN chmod -R +x /opt/tomcat/bin/ /opt/jdk/bin/
 CMD ["catalina.sh", "run"]
 VOLUME ["/logs"]
 EXPOSE 8080
