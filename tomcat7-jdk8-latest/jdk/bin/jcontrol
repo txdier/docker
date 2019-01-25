@@ -49,6 +49,8 @@ link_logic() {
 # Output:
 #     This function writes the path to the link reference to stdout.
 #
+# Note: This function is not capable of detecting that one or more directories
+#       in the path is also a link and unravelling that.
 #
 dereference() {
     path="$*"
@@ -57,7 +59,7 @@ dereference() {
     #
     # Make sure the path is absolute
     #
-    parent="`cd \`dirname \"${path}\"\`; pwd -P`"
+    parent="`cd \`dirname \"${path}\"\`; pwd`"
     child="`basename \"${path}\"`"
 
     #
@@ -108,11 +110,11 @@ dereference() {
 #       information.
 #
 check_parts() {
-    result="`cd \`dirname \"$*\"\`; pwd -P`"
+    result="`cd \`dirname \"$*\"\`; pwd`"
 
     # if this is a JDK, we need the JRE subdir
     if [ -d "${result}/../jre/bin" ]; then
-        result="`cd \`dirname \"$*\"\`/../jre/bin; pwd -P`"
+        result="`cd \`dirname \"$*\"\`/../jre/bin; pwd`"
     fi
 
     if [ ! -x "${result}/java" ] || [ ! -f "${result}/../lib/deploy.jar" ]; then
