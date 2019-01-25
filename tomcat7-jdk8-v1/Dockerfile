@@ -10,9 +10,10 @@ RUN	 yum install -y libstdc++ ca-certificates gcc libgcc glibc
 #CMD ["java", "-version"]
 # install tomcat8.5.35
 ENV	TOMCAT_HOME=/opt/tomcat \
-    	CATALINA_HOME=/opt/tomcat \
+    CATALINA_HOME=/opt/tomcat \
 	CATALINA_OPTS="-Xms1024m -Xmx2048m -Xmn768m -Xss2m -XX:NewSize=512M -XX:MaxNewSize=512m  -XX:PermSize=512M -XX:MaxPermSize=1024m -XX:-UseSplitVerifier -Djava.awt.headless=true -Duser.timezone=GMT+08"
 COPY tomcat /opt/tomcat
+RUN chmod -R +x /opt/bin/
 CMD ["catalina.sh", "run"]
 VOLUME ["/logs"]
 EXPOSE 8080
