@@ -35,7 +35,6 @@ RUN set -ex; \
         libressl; \
     cd $DISTRO_NAME  \
     mv "$DISTRO_NAME/conf/"* "$ZOO_CONF_DIR"; \
-    rm -rf "$GNUPGHOME" ; \
     apk del .build-deps
 
 WORKDIR $DISTRO_NAME
