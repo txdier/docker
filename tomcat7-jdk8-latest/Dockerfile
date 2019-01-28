@@ -4,7 +4,7 @@ ENV	JAVA_VERSION_MAJOR=8 \
     	JAVA_VERSION_MINOR=191 \
     	JAVA_PACKAGE=jdk \
     	JAVA_HOME=/opt/jdk \
-        JRE_HOME=/usr/local/jdk1.7.0_67/jre \
+        JRE_HOME=/opt/jdk/jre \
         CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar \
 		PATH=/opt/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/tomcat/bin
 COPY jdk /opt/jdk
