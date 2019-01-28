@@ -33,6 +33,7 @@ RUN set -ex; \
         ca-certificates \
         gnupg \
         libressl; \
+    cd / \
     mv "$DISTRO_NAME/conf/"* "$ZOO_CONF_DIR"; \
     apk del .build-deps
 
