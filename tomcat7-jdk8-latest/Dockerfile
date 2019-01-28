@@ -1,12 +1,12 @@
 FROM centos:7
 MAINTAINER Anastas Dancha <qiao.li@xiaopeidou.com>
-ENV	JAVA_VERSION_MAJOR=8 \
-    	JAVA_VERSION_MINOR=191 \
+ENV	JAVA_VERSION_MAJOR=7 \
+#    	JAVA_VERSION_MINOR=191 \
     	JAVA_PACKAGE=jdk \
     	JAVA_HOME=/opt/jdk \
         JRE_HOME=/opt/jdk/jre \
-        CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar \
-		PATH=/opt/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/tomcat/bin
+        CLASSPATH=/opt/jdk/lib/tools.jar:/opt/jdk/lib/dt.jar \
+		PATH=/opt/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/tomcat/bin:/opt/jdk/jre
 COPY jdk /opt/jdk
 RUN	 yum install -y libstdc++ ca-certificates gcc libgcc glibc
 #CMD ["java", "-version"]
