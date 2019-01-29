@@ -32,7 +32,7 @@ RUN set -ex; \
     apk add --no-cache --virtual .build-deps \
         ca-certificates \
         gnupg \
-        libressl; \
+        libressl; && \
     cd / \
     mv "$DISTRO_NAME/conf/"* "$ZOO_CONF_DIR"; \
     apk del .build-deps
