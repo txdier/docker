@@ -8,7 +8,7 @@ ENV	JAVA_VERSION_MAJOR=8 \
 COPY glibc-2.28-r0.apk /opt/
 COPY jdk /opt/jdk
 RUN	apk upgrade --update && \
-   	 apk add --update libstdc++ ca-certificates bash && \
+   	 apk add --update libstdc++ ca-certificates bash curl && \
     	apk add --allow-untrusted /opt/*.apk && \
     	rm -v /opt/*.apk
 #CMD ["java", "-version"]
