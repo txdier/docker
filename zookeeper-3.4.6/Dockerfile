@@ -28,13 +28,13 @@ ARG GPG_KEY=C61B346552DC5E0CB53AA84F59147497767E7473
 ARG DISTRO_NAME=zookeeper-3.4.6
 COPY $DISTRO_NAME /
 # Download Apache Zookeeper, verify its PGP signature, untar and clean up
-RUN set -ex; \
+RUN set -ex && \
     apk add --no-cache --virtual .build-deps \
         ca-certificates \
         gnupg \
-        libressl; && \
-    cd / \
-    mv "$DISTRO_NAME/conf/"* "$ZOO_CONF_DIR"; \
+        libressl && \
+    cd / && \
+    mv "$DISTRO_NAME/conf/"* "$ZOO_CONF_DIR" && \
     apk del .build-deps
 
 WORKDIR $DISTRO_NAME
